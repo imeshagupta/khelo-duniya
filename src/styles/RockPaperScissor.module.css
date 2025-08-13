@@ -1,0 +1,134 @@
+.rpsContainer {
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background: url("../assets/rpsBg.jpg") center/cover no-repeat fixed;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.choiceBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  width: 140px;
+}
+
+.choiceBtn img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  background-color: white;
+}
+
+.choiceBtn span {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.choiceBtn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.resultCard {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.choices {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.choices img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+  background-color: white;
+}
+
+.outcome {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.score {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.resetBtn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.resetBtn:hover {
+  background: #ff1a1a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .choiceBtn {
+    width: 110px;
+    padding: 0.8rem;
+  }
+  .choiceBtn img {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game {
+    gap: 1rem;
+  }
+  .choiceBtn {
+    width: 90px;
+    padding: 0.6rem;
+  }
+  .choiceBtn img {
+    width: 55px;
+    height: 55px;
+  }
+  .resultCard {
+    padding: 1rem;
+  }
+}

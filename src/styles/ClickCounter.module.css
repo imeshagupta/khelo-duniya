@@ -1,0 +1,100 @@
+.container {
+  height: 80vh;
+  background-size: auto;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.timer {
+  color: #ffeb3b;
+  font-weight: bold;
+}
+
+.clicks {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.clickBtn {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.clickBtn:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.clickBtn:hover:not(:disabled) {
+  transform: scale(1.05);
+  background-color: #e64a19;
+}
+
+.startBtn {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.startBtn:hover {
+  transform: scale(1.05);
+  background-color: #1976d2;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+}

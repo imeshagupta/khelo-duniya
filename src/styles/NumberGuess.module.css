@@ -1,0 +1,99 @@
+.container {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.gameBox {
+  background: rgba(23, 36, 47, 0.9);
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btnCheck {
+  background: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btnCheck:hover {
+  background: #218838;
+}
+
+.btnReset {
+  background: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btnReset:hover {
+  background: #c82333;
+}
+
+.resultBox {
+  margin-top: 15px;
+  background-color: #0d1b26;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.guessList {
+  margin-top: 15px;
+  text-align: left;
+  color: #fff;
+}
+
+.guessList ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.guessList li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,86 @@
+.homeContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gameCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+
+.gameCard h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.gameCard img {
+  height: 200px;
+  width: auto;
+}
+
+.gameCard button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+  align-self: center;
+}
+
+.gameCard button:hover {
+  background: #0056b3;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .homeContainer {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 15px 10px;
+    gap: 15px;
+  }
+  .gameCard {
+    min-height: 160px;
+    padding: 15px;
+  }
+  .gameCard h2 {
+    font-size: 1.2rem;
+  }
+  .gameCard button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homeContainer {
+    grid-template-columns: 1fr;
+    padding: 10px 8px;
+    gap: 12px;
+  }
+  .gameCard {
+    min-height: 140px;
+    padding: 12px;
+  }
+  .gameCard h2 {
+    font-size: 1.1rem;
+  }
+  .gameCard button {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+}

@@ -1,0 +1,110 @@
+.ticTacToe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.title {
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.status {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 2px solid #333;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.square:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.oMark {
+  color: #a0522d; /* browny shade */
+}
+
+.highlight {
+  background-color: #90ee90 !important;
+}
+
+.resetBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.resetBtn:hover {
+  background-color: #555;
+}
+
+/* Medium screens */
+@media (max-width: 1020px) {
+  .board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+  .square {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 720px) {
+  .board {
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+  }
+  .square {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .board {
+    grid-template-columns: repeat(3, 40px);
+    grid-template-rows: repeat(3, 40px);
+  }
+  .square {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
