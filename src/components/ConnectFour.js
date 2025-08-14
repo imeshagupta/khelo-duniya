@@ -1,118 +1,160 @@
 import React, { useState } from "react";
 import styles from "../styles/ConnectFour.module.css";
-import ConnectFourBg from "../assets/colorfulBg.jpg";
 
-const ROWS = 6;
-const COLS = 7;
+export default function ConnectFour() {
+  const rows = 6;
+  const cols = 7;
+  const emptyBoard = Array(rows)
+    .fill(null)
+    .map(() => Array(cols).fill(null));
 
-const ConnectFour = () => {
-  const [board, setBoard] = useState(
-    Array(ROWS)
-      .fill(null)
-      .map(() => Array(COLS).fill(null))
-  );
-  const [player, setPlayer] = useState("red");
+  const [board, setBoard] = useState(emptyBoard);
+  const [currentPlayer, setCurrentPlayer] = useState("red");
   const [winner, setWinner] = useState(null);
+  const [winningCells, setWinningCells] = useState([]);
 
   const dropDisc = (col) => {
     if (winner) return;
 
     const newBoard = board.map((row) => [...row]);
 
-    for (let row = ROWS - 1; row >= 0; row--) {
-      if (!newBoard[row][col]) {
-        newBoard[row][col] = player;
-        setBoard(newBoard);
-        if (checkWin(newBoard, row, col, player)) {
-          setWinner(player);
-        } else {
-          setPlayer(player === "red" ? "yellow" : "red");
-        }
+    for (let r = rows - 1; r >= 0; r--) {
+      if (!newBoard[r][col]) {
+        newBoard[r][col] = currentPlayer;
         break;
       }
     }
-  };
 
-  const checkWin = (b, row, col, color) => {
-    const directions = [
-      [0, 1],
-      [1, 0],
-      [1, 1],
-      [1, -1],
-    ];
+    setBoard(newBoard);
 
-    for (let [dx, dy] of directions) {
-      let count = 1;
-
-      let r = row + dx,
-        c = col + dy;
-      while (r >= 0 && r < ROWS && c >= 0 && c < COLS && b[r][c] === color) {
-        count++;
-        r += dx;
-        c += dy;
-      }
-
-      r = row - dx;
-      c = col - dy;
-      while (r >= 0 && r < ROWS && c >= 0 && c < COLS && b[r][c] === color) {
-        count++;
-        r -= dx;
-        c -= dy;
-      }
-
-      if (count >= 4) return true;
+    const result = checkWinner(newBoard, currentPlayer);
+    if (result) {
+      setWinner(currentPlayer);
+      setWinningCells(result);
+    } else {
+      setCurrentPlayer(currentPlayer === "red" ? "yellow" : "red");
     }
-    return false;
   };
 
-  const resetGame = () => {
-    setBoard(
-      Array(ROWS)
-        .fill(null)
-        .map(() => Array(COLS).fill(null))
-    );
-    setPlayer("red");
+  const checkWinner = (board, player) => {
+    const checkLine = (cells) => {
+      if (cells.every(([r, c]) => board[r][c] === player)) {
+        return cells;
+      }
+      return null;
+    };
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols - 3; c++) {
+        const line = checkLine([
+          [r, c],
+          [r, c + 1],
+          [r, c + 2],
+          [r, c + 3],
+        ]);
+        if (line) return line;
+      }
+    }
+
+    for (let c = 0; c < cols; c++) {
+      for (let r = 0; r < rows - 3; r++) {
+        const line = checkLine([
+          [r, c],
+          [r + 1, c],
+          [r + 2, c],
+          [r + 3, c],
+        ]);
+        if (line) return line;
+      }
+    }
+
+    for (let r = 0; r < rows - 3; r++) {
+      for (let c = 0; c < cols - 3; c++) {
+        const line = checkLine([
+          [r, c],
+          [r + 1, c + 1],
+          [r + 2, c + 2],
+          [r + 3, c + 3],
+        ]);
+        if (line) return line;
+      }
+    }
+
+    for (let r = 3; r < rows; r++) {
+      for (let c = 0; c < cols - 3; c++) {
+        const line = checkLine([
+          [r, c],
+          [r - 1, c + 1],
+          [r - 2, c + 2],
+          [r - 3, c + 3],
+        ]);
+        if (line) return line;
+      }
+    }
+
+    return null;
+  };
+
+  const restartGame = () => {
+    setBoard(emptyBoard);
+    setCurrentPlayer("red");
     setWinner(null);
+    setWinningCells([]);
   };
 
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundImage: `url(${ConnectFourBg})` }}
-    >
-      <h1>Connect Four</h1>
-      <h2 className={styles.status}>
-        {winner
-          ? `${winner.toUpperCase()} Wins! 🎉`
-          : `Turn: ${player.toUpperCase()}`}
-      </h2>
+    <div className={styles.container}>
+      <h1 className={styles.title}>🎯 Connect Four</h1>
 
-      <button className={styles.resetBtn} onClick={resetGame}>
-        Restart
+      <div
+        className={styles.status}
+        style={{
+          color: winner
+            ? "#4CAF50"
+            : currentPlayer === "red"
+            ? "#ff4d4d"
+            : "#FFD700",
+        }}
+      >
+        {winner
+          ? `🎉 Winner: ${winner.toUpperCase()}!`
+          : `Current Turn: ${currentPlayer.toUpperCase()}`}
+      </div>
+
+      <button onClick={restartGame} className={styles.resetBtn}>
+        🔄 Restart Game
       </button>
 
       <div className={styles.board}>
-        {board.map((row, rIdx) => (
-          <div key={rIdx} className={styles.row}>
-            {row.map((cell, cIdx) => (
+        {board.map((row, rowIndex) =>
+          row.map((cell, colIndex) => {
+            const isWinningCell = winningCells.some(
+              ([r, c]) => r === rowIndex && c === colIndex
+            );
+            return (
               <div
-                key={cIdx}
+                key={`${rowIndex}-${colIndex}`}
                 className={styles.cell}
-                onClick={() => dropDisc(cIdx)}
+                onClick={() => dropDisc(colIndex)}
               >
                 {cell && (
                   <div
-                    className={styles.disc}
-                    style={{ backgroundColor: cell }}
-                  ></div>
+                    className={`${styles.disc} ${
+                      cell === "red" ? styles.red : styles.yellow
+                    } ${
+                      isWinningCell
+                        ? cell === "red"
+                          ? styles.glowRed
+                          : styles.glowYellow
+                        : ""
+                    }`}
+                  />
                 )}
               </div>
-            ))}
-          </div>
-        ))}
+            );
+          })
+        )}
       </div>
     </div>
   );
-};
-
-export default ConnectFour;
+}
