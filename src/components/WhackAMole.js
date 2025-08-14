@@ -22,7 +22,6 @@ export default function WhackAMole() {
     }
   };
 
-  // Mole pops randomly
   useEffect(() => {
     if (!isPlaying) return;
     const moleInterval = setInterval(() => {
@@ -32,7 +31,6 @@ export default function WhackAMole() {
     return () => clearInterval(moleInterval);
   }, [isPlaying]);
 
-  // Countdown timer
   useEffect(() => {
     if (!isPlaying) return;
     if (timeLeft === 0) {

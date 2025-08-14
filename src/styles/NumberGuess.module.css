@@ -1,57 +1,68 @@
 .container {
-  min-height: 100vh;
+  min-height: 80vh;
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 2vw;
+  box-sizing: border-box;
 }
 
 .gameBox {
   background: rgba(23, 36, 47, 0.9);
-  padding: 25px;
+  padding: clamp(1.5rem, 4vw, 2rem);
   border-radius: 12px;
   max-width: 400px;
   width: 100%;
   text-align: center;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
 .title {
   color: #fff;
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
   color: #ddd;
-  margin-bottom: 15px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  margin-bottom: 1rem;
 }
 
 .input {
-  padding: 10px;
+  padding: clamp(0.6rem, 2vw, 1rem);
   border-radius: 6px;
   border: none;
   outline: none;
   width: 100%;
-  font-size: 16px;
-  margin-bottom: 15px;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 .btnGroup {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  flex-wrap: wrap;
+}
+
+.btnCheck,
+.btnReset {
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 4vw, 1.5rem);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  transition: background 0.3s;
 }
 
 .btnCheck {
   background: #28a745;
   color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
 }
 
 .btnCheck:hover {
@@ -61,10 +72,6 @@
 .btnReset {
   background: #dc3545;
   color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
 }
 
 .btnReset:hover {
@@ -72,16 +79,16 @@
 }
 
 .resultBox {
-  margin-top: 15px;
+  margin-top: 1rem;
   background-color: #0d1b26;
   color: white;
-  padding: 12px;
+  padding: clamp(0.8rem, 2vw, 1rem);
   border-radius: 8px;
   font-weight: bold;
 }
 
 .guessList {
-  margin-top: 15px;
+  margin-top: 1rem;
   text-align: left;
   color: #fff;
 }
@@ -93,7 +100,34 @@
 
 .guessList li {
   background: rgba(255, 255, 255, 0.1);
-  padding: 6px;
+  padding: clamp(0.4rem, 1.5vw, 0.6rem);
   border-radius: 4px;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  .input {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  .btnCheck,
+  .btnReset {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  .resultBox {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .guessList li {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
 }

@@ -5,40 +5,45 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 2vw;
+  box-sizing: border-box;
 }
 
 .card {
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
-  padding: 25px;
+  padding: clamp(1.5rem, 4vw, 2rem);
   width: 100%;
   max-width: 500px;
   text-align: center;
   color: #fff;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   margin-bottom: 10px;
+  color: #704012;
+  font-weight: 700;
 }
 
 .stats {
   display: flex;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 4vw, 1.2rem);
   margin-bottom: 15px;
   font-weight: bold;
+  color: black;
 }
 
 .startBtn {
-  background-color: #ff5722;
+  background-color: #26632a;
   border: none;
-  padding: 12px 25px;
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.5rem, 4vw, 2rem);
   border-radius: 50px;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   color: white;
   cursor: pointer;
   margin-bottom: 15px;
@@ -52,15 +57,15 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  gap: 15px;
+  grid-template-columns: repeat(3, clamp(70px, 15vw, 100px));
+  gap: clamp(10px, 3vw, 15px);
   justify-content: center;
 }
 
 .hole {
-  width: 100px;
-  height: 100px;
-  background-color: #8b5a2b; /* brown color */
+  width: clamp(70px, 15vw, 100px);
+  height: clamp(70px, 15vw, 100px);
+  background-color: #8b5a2b;
   border-radius: 50%;
   position: relative;
   cursor: pointer;
@@ -68,40 +73,56 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  transition: transform 0.2s;
+}
+
+.hole:hover {
+  transform: scale(1.05);
+  background-color: #704012;
 }
 
 .mole {
-  width: 60px;
-  height: 60px;
+  width: clamp(40px, 10vw, 60px);
+  height: clamp(40px, 10vw, 60px);
   border-radius: 50%;
   position: absolute;
   bottom: -10px;
   transition: bottom 0.2s;
 }
 
-.hole:hover {
-  transform: scale(1.05);
-}
-
 .result {
   margin-top: 20px;
-  font-size: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  background-color: rgba(60, 56, 56, 0.3);
+  padding: clamp(0.5rem, 2vw, 1rem);
   border-radius: 10px;
 }
-@media (max-width: 480px) {
+
+@media (max-width: 360px) {
   .grid {
-    grid-template-columns: repeat(3, 70px);
-    gap: 10px;
+    grid-template-columns: repeat(3, 60px);
+    gap: 8px;
   }
   .hole {
-    width: 70px;
-    height: 70px;
-    background-color: #8b5a2b; /* brown color */
+    width: 60px;
+    height: 60px;
   }
   .mole {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .stats {
+    font-size: 0.9rem;
+  }
+  .startBtn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+  }
+  .result {
+    font-size: 1.2rem;
+    padding: 0.5rem;
   }
 }

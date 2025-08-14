@@ -54,8 +54,12 @@ const RockPaperScissor = () => {
 
   return (
     <div className={styles.rpsContainer}>
-      <h1>Rock Paper Scissors</h1>
-      <p className={styles.subtitle}>Make your move!</p>
+      <div className={styles.heading}>
+        <h1 className="text-dark fs-1">Rock Paper Scissors</h1>
+        <div className={styles.subHeading}>
+          <p className={styles.subtitle}>Make your move!</p>
+        </div>
+      </div>
 
       <div className={styles.game}>
         {["Rock", "Paper", "Scissor"].map((move) => (
